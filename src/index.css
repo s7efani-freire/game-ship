@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Pixel font styling */
+.pixel-font {
+  font-family: 'Orbitron', 'Courier New', monospace;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+/* Custom animations */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes star-move {
+  0% { 
+    transform: translateY(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(610px);
+    opacity: 0;
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 2s infinite;
+}
+
+.animate-star-move {
+  animation: star-move linear infinite;
+}
+
+/* Remove default focus outlines and add custom ones */
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.5);
+}
+
+/* Smooth cursor movement */
+* {
+  cursor: default;
+}
+
+button {
+  cursor: pointer;
+}
