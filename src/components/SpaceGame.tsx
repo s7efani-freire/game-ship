@@ -7,7 +7,7 @@ import { createMeteor, updateGameObjects, checkCollisions, isOutOfBounds } from 
 const GAME_WIDTH = 800;
 const GAME_HEIGHT = 600;
 const METEOR_SPAWN_RATE = 0.02;
-const PLAYER_SPEED = 5;
+const PLAYER_SPEED = 7;
 const BULLET_SPEED = 8;
 
 const SpaceGame: React.FC = () => {
@@ -81,11 +81,15 @@ const SpaceGame: React.FC = () => {
   const gameLoop = useCallback(() => {
     if (gameState !== 'playing') return;
 
-    // Move player
+    // Move player with smooth movement
     setPlayer(prev => {
       let newX = prev.x;
-      if (keys.has('ArrowLeft') && prev.x > 0) newX -= prev.speed;
-      if (keys.has('ArrowRight') && prev.x < GAME_WIDTH - prev.width) newX += prev.speed;
+      if (keys.has('ArrowLeft') && prev.x > 0) {
+        newX = Math.max(0, prev.x - prev.speed);
+      }
+      if (keys.has('ArrowRight') && prev.x < GAME_WIDTH - prev.width) {
+        newX = Math.min(GAME_WIDTH - prev.width, prev.x + prev.speed);
+      }
       return { ...prev, x: newX };
     });
 
@@ -147,17 +151,21 @@ const SpaceGame: React.FC = () => {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      e.preventDefault();
-      setKeys(prev => new Set([...prev, e.code]));
+      if (['ArrowLeft', 'ArrowRight', 'Space'].includes(e.code)) {
+        e.preventDefault();
+        setKeys(prev => new Set([...prev, e.code]));
+      }
     };
 
     const handleKeyUp = (e: KeyboardEvent) => {
-      e.preventDefault();
-      setKeys(prev => {
-        const newKeys = new Set(prev);
-        newKeys.delete(e.code);
-        return newKeys;
-      });
+      if (['ArrowLeft', 'ArrowRight', 'Space'].includes(e.code)) {
+        e.preventDefault();
+        setKeys(prev => {
+          const newKeys = new Set(prev);
+          newKeys.delete(e.code);
+          return newKeys;
+        });
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);

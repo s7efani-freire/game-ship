@@ -8,12 +8,13 @@ interface PlayerProps {
 const Player: React.FC<PlayerProps> = ({ player }) => {
   return (
     <div
-      className="absolute transition-all duration-75"
+      className="absolute transition-transform duration-75 ease-out"
       style={{
         left: `${player.x}px`,
         top: `${player.y}px`,
         width: `${player.width}px`,
-        height: `${player.height}px`
+        height: `${player.height}px`,
+        transform: 'translateZ(0)' // Force hardware acceleration
       }}
     >
       {/* Spaceship body */}

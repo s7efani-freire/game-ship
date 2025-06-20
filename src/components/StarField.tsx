@@ -26,18 +26,34 @@ const StarField: React.FC = () => {
         />
       ))}
       
-      {/* Moving stars for depth effect */}
-      {Array.from({ length: 30 }, (_, i) => (
+      {/* Moving stars for depth effect - slower movement */}
+      {Array.from({ length: 20 }, (_, i) => (
         <div
           key={`moving-${i}`}
-          className="absolute bg-blue-200 rounded-full animate-star-move"
+          className="absolute bg-blue-200 rounded-full animate-star-move-slow"
           style={{
             left: `${Math.random() * 100}%`,
             top: '-2px',
-            width: '2px',
+            width: '1px',
             height: '2px',
-            animationDelay: `${Math.random() * 5}s`,
-            animationDuration: `${3 + Math.random() * 4}s`
+            animationDelay: `${Math.random() * 8}s`,
+            animationDuration: `${8 + Math.random() * 6}s`
+          }}
+        />
+      ))}
+      
+      {/* Even slower background stars */}
+      {Array.from({ length: 15 }, (_, i) => (
+        <div
+          key={`bg-${i}`}
+          className="absolute bg-purple-200 rounded-full animate-star-move-very-slow opacity-40"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: '-1px',
+            width: '0.5px',
+            height: '1px',
+            animationDelay: `${Math.random() * 12}s`,
+            animationDuration: `${15 + Math.random() * 10}s`
           }}
         />
       ))}
