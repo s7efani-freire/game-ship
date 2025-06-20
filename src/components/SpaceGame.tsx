@@ -120,14 +120,19 @@ const SpaceGame: React.FC = () => {
     // Check collisions
     const { meteorsHit, bulletsUsed, playerHit } = checkCollisions(meteors, bullets, player);
     
-    if (meteorsHit.length > 0) {
+    // Remove hit meteors and used bullets
+    if (meteorsHit.length > 0 || bulletsUsed.length > 0) {
       setMeteors(prev => prev.filter(meteor => !meteorsHit.includes(meteor)));
       setBullets(prev => prev.filter(bullet => !bulletsUsed.includes(bullet)));
       
-      const pointsEarned = meteorsHit.reduce((total, meteor) => total + meteor.points, 0);
-      setScore(prev => prev + pointsEarned);
+      // Add points for destroyed meteors
+      if (meteorsHit.length > 0) {
+        const pointsEarned = meteorsHit.reduce((total, meteor) => total + meteor.points, 0);
+        setScore(prev => prev + pointsEarned);
+      }
     }
 
+    // Check if player was hit
     if (playerHit) {
       endGame();
     }

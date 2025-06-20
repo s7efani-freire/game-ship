@@ -54,8 +54,13 @@ export const checkCollisions = (
   bullets.forEach(bullet => {
     meteors.forEach(meteor => {
       if (checkCollision(bullet, meteor)) {
-        if (!meteorsHit.includes(meteor)) meteorsHit.push(meteor);
-        if (!bulletsUsed.includes(bullet)) bulletsUsed.push(bullet);
+        // Only add if not already in the arrays
+        if (!meteorsHit.some(m => m === meteor)) {
+          meteorsHit.push(meteor);
+        }
+        if (!bulletsUsed.some(b => b === bullet)) {
+          bulletsUsed.push(bullet);
+        }
       }
     });
   });

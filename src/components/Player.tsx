@@ -23,7 +23,7 @@ const Player: React.FC<PlayerProps> = ({ player }) => {
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-6 bg-gradient-to-t from-gray-300 to-gray-100 rounded-full border border-gray-400" />
         
         {/* Top dome */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-12 h-8 bg-gradient-to-t from-blue-400 to-cyan-300 rounded-full border border-blue-500 opacity-80" />
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-8 h-4 bg-gradient-to-t from-blue-400 to-cyan-300 rounded-full border border-blue-500 opacity-80" />
         
         {/* Light beam */}
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-4 bg-gradient-to-t from-cyan-400 to-transparent opacity-70" />

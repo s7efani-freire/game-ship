@@ -11,8 +11,8 @@
 
 /* Custom animations */
 @keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.8; }
 }
 
 @keyframes star-move-slow {
@@ -20,11 +20,11 @@
     transform: translateY(0px);
     opacity: 0;
   }
-  10% {
-    opacity: 0.8;
+  15% {
+    opacity: 0.4;
   }
-  90% {
-    opacity: 0.8;
+  85% {
+    opacity: 0.4;
   }
   100% { 
     transform: translateY(610px);
@@ -37,11 +37,11 @@
     transform: translateY(0px);
     opacity: 0;
   }
-  15% {
-    opacity: 0.6;
+  20% {
+    opacity: 0.2;
   }
-  85% {
-    opacity: 0.6;
+  80% {
+    opacity: 0.2;
   }
   100% { 
     transform: translateY(610px);
@@ -50,7 +50,7 @@
 }
 
 .animate-twinkle {
-  animation: twinkle 2s infinite;
+  animation: twinkle 3s infinite;
 }
 
 .animate-star-move-slow {

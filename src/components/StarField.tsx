@@ -1,12 +1,12 @@
 import React from 'react';
 
 const StarField: React.FC = () => {
-  const stars = Array.from({ length: 100 }, (_, i) => ({
+  const stars = Array.from({ length: 80 }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
     y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    animationDelay: Math.random() * 4
+    size: Math.random() * 2.5 + 0.5,
+    animationDelay: Math.random() * 6
   }));
 
   return (
@@ -21,39 +21,39 @@ const StarField: React.FC = () => {
             width: `${star.size}px`,
             height: `${star.size}px`,
             animationDelay: `${star.animationDelay}s`,
-            opacity: 0.6 + Math.random() * 0.4
+            opacity: 0.4 + Math.random() * 0.4
           }}
         />
       ))}
       
-      {/* Moving stars for depth effect - slower movement */}
-      {Array.from({ length: 20 }, (_, i) => (
+      {/* Ultra slow moving stars */}
+      {Array.from({ length: 8 }, (_, i) => (
         <div
           key={`moving-${i}`}
-          className="absolute bg-blue-200 rounded-full animate-star-move-slow"
+          className="absolute bg-blue-100 rounded-full animate-star-move-slow opacity-40"
           style={{
             left: `${Math.random() * 100}%`,
             top: '-2px',
             width: '1px',
             height: '2px',
-            animationDelay: `${Math.random() * 8}s`,
-            animationDuration: `${8 + Math.random() * 6}s`
+            animationDelay: `${Math.random() * 25}s`,
+            animationDuration: `${40 + Math.random() * 30}s`
           }}
         />
       ))}
       
-      {/* Even slower background stars */}
-      {Array.from({ length: 15 }, (_, i) => (
+      {/* Super slow background stars */}
+      {Array.from({ length: 5 }, (_, i) => (
         <div
           key={`bg-${i}`}
-          className="absolute bg-purple-200 rounded-full animate-star-move-very-slow opacity-40"
+          className="absolute bg-purple-100 rounded-full animate-star-move-very-slow opacity-20"
           style={{
             left: `${Math.random() * 100}%`,
             top: '-1px',
             width: '0.5px',
             height: '1px',
-            animationDelay: `${Math.random() * 12}s`,
-            animationDuration: `${15 + Math.random() * 10}s`
+            animationDelay: `${Math.random() * 30}s`,
+            animationDuration: `${60 + Math.random() * 40}s`
           }}
         />
       ))}
